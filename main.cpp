@@ -7,13 +7,16 @@ int main()
   char s[] = "/dev/ttyUSB0";
   a = s;
   printf("openserialport\n");
-  crane.OpenCOMDevice(a);
+  if(!crane.OpenCOMDevice(a))
+    {
+      return 0;
+    }
   printf("initArm\n");
   crane.initArm();
 
 int c;
 
-  std::cout << "コマンドを選択してください" << std::endl;
+  std::cout << "コマンドを選択してください(3.4.6.7.8はサーボONしてから行って下さい)" << std::endl;
   std::cout << "1 : サーボON" << std::endl;
   std::cout << "2 : サーボOFF" << std::endl;
   std::cout << "3 : アーム先端の移動" << std::endl;
